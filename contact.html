@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule a Visit — Seawell Senior Living</title>
+<meta name="description" content="Schedule a conversation or tour with Seawell. No pressure, no sales tactics — real answers to real questions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Seawell home">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="none" stroke="#1E4D47" stroke-width="1.3"/>
+        <text x="50" y="68" text-anchor="middle" font-family="Cormorant Garamond, Didot, Georgia, serif" font-size="62" font-style="italic" font-weight="500" fill="#1E4D47">S</text>
+        <path d="M 26 76 Q 38 72 50 76 T 74 76" fill="none" stroke="#1E4D47" stroke-width="0.9" opacity="0.45"/>
+      </svg>
+      <span class="nav-logo-text"><span class="italic-s">S</span>EAWELL</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="about.html">Approach</a></li>
+      <li><a href="living.html">Ways of Living</a></li>
+      <li><a href="life.html">Life at Seawell</a></li>
+      <li><a href="communities.html">Communities</a></li>
+      <li><a href="families.html">For Families</a></li>
+      <li><a href="contact.html" class="nav-cta active">Schedule a Visit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <svg class="page-hero-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="50" cy="50" r="47" fill="none" stroke="#1E4D47" stroke-width="0.3"/>
+    <text x="50" y="70" text-anchor="middle" font-family="Cormorant Garamond, Didot, Georgia, serif" font-size="70" font-style="italic" fill="#1E4D47">S</text>
+  </svg>
+  <div class="container page-hero-inner">
+    <div class="page-hero-eyebrow">Schedule a visit</div>
+    <h1>Start a <em>conversation</em>.</h1>
+    <p class="page-hero-lede">Whether you are actively researching for a family member or simply exploring what might be possible, we welcome the conversation. No pressure. No 'limited-time offers.' Just real answers to real questions.</p>
+  </div>
+</section>
+<section class="standard">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal">
+        <h2 class="col-heading">What to <em>expect</em> from a conversation.</h2>
+        <p class="prose">A call or visit with Seawell is a conversation, not a sales meeting. We will ask you about the person you're calling for, what you've been navigating, and what you're looking for. We will answer questions honestly — including questions about pricing, about whether Seawell is a good fit, and about other communities we think might also be worth considering. If Seawell is not the right fit, we will say so.</p>
+        <p class="prose">If you'd like to tour a community, we welcome unannounced visits and are happy to tour at mealtimes. Pre-opening conversations for communities under development are also available — many of our strongest future residents are families planning a year or more ahead.</p>
+        <p class="prose" style="margin-top:32px">You can also reach us directly:</p>
+        <p class="prose"><strong>Email:</strong> <a href="mailto:hello@seawellcare.com">hello@seawellcare.com</a><br>
+        <strong>Phone:</strong> <a href="tel:+10000000000">(000) 000-0000</a><br>
+        <strong>California</strong></p>
+      </div>
+      <div class="reveal">
+        <form class="form-stack" name="contact" netlify onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank you — we'll be in touch'; this.reset();">
+          <input type="hidden" name="form-name" value="contact">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="first-name">First name</label>
+              <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-field">
+              <label for="last-name">Last name</label>
+              <input type="text" id="last-name" name="last-name" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-field">
+            <label for="inquiry">I'm reaching out about</label>
+            <select id="inquiry" name="inquiry">
+              <option>Researching for myself</option>
+              <option>Researching for a parent or loved one</option>
+              <option>Scheduling a tour</option>
+              <option>Pricing inquiry</option>
+              <option>Medi-Cal / Assisted Living Waiver</option>
+              <option>Career inquiry</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="community">Community of interest (optional)</label>
+            <select id="community" name="community">
+              <option>Not yet sure</option>
+              <option>Seawell at La Jolla</option>
+              <option>Seawell at Santa Barbara</option>
+              <option>Seawell at Carmel</option>
+              <option>Multiple communities</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="message">Your message (optional)</label>
+            <textarea id="message" name="message" placeholder="Tell us a bit about what you're looking for, or questions you'd like us to answer..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send message
+            <svg class="arrow" viewBox="0 0 14 14"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="square"/></svg>
+          </button>
+          <p style="font-size:12px;color:var(--charcoal-soft);margin-top:8px;opacity:0.8">We typically respond within one business day. Your information will not be shared.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="#F4EDE0" stroke-width="1.2"/>
+          <text x="50" y="68" text-anchor="middle" font-family="Cormorant Garamond, Didot, Georgia, serif" font-size="62" font-style="italic" font-weight="500" fill="#F4EDE0">S</text>
+          <path d="M 26 76 Q 38 72 50 76 T 74 76" fill="none" stroke="#F4EDE0" stroke-width="0.9" opacity="0.5"/>
+        </svg>
+        <div class="footer-brand-name"><span class="italic-s">S</span>EAWELL</div>
+        <p class="footer-tagline">Small enough to know you.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Seawell</div>
+        <ul>
+          <li><a href="about.html">Our approach</a></li>
+          <li><a href="life.html">Life at Seawell</a></li>
+          <li><a href="communities.html">Communities</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Ways of Living</div>
+        <ul>
+          <li><a href="independent-living.html">Independent Living</a></li>
+          <li><a href="assisted-living.html">Assisted Living</a></li>
+          <li><a href="memory-care.html">Memory Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Resources</div>
+        <ul>
+          <li><a href="families.html">For Families</a></li>
+          <li><a href="families.html#faq">FAQ</a></li>
+          <li><a href="contact.html">Schedule a Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:hello@seawellcare.com">hello@seawellcare.com</a></li>
+          <li><a href="tel:+10000000000">(000) 000-0000</a></li>
+          <li>California, USA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Seawell Senior Living. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

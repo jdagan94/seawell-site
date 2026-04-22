@@ -8,818 +8,54 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-:root {
-  --teal: #1E4D47;
-  --teal-deep: #153933;
-  --teal-soft: #3A6B64;
-  --ivory: #F4EDE0;
-  --ivory-warm: #EDE3D0;
-  --sand: #B8A589;
-  --sand-light: #D4C4A8;
-  --charcoal: #2A2520;
-  --charcoal-soft: #4A443E;
-  --white-warm: #FAF6ED;
-  --line: rgba(30, 77, 71, 0.15);
-  --line-strong: rgba(30, 77, 71, 0.3);
-  --serif: 'Cormorant Garamond', 'Didot', 'Playfair Display', Georgia, serif;
-  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--charcoal);
-  background: var(--ivory);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-::selection {
-  background: var(--teal);
-  color: var(--ivory);
-}
-
-h1, h2, h3, h4 {
-  font-family: var(--serif);
-  font-weight: 400;
-  color: var(--teal);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
-
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 48px;
-}
-
-@media (max-width: 768px) {
-  .container { padding: 0 24px; }
-}
-
-/* ===== NAV ===== */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 24px 0;
-  background: rgba(244, 237, 224, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: padding 0.3s ease, background 0.3s ease;
-}
-
-nav.scrolled {
-  padding: 16px 0;
-  border-bottom: 0.5px solid var(--line);
-}
-
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.nav-logo svg {
-  width: 36px;
-  height: 36px;
-}
-
-.nav-logo-text {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  color: var(--teal);
-}
-
-.nav-logo-text .italic-s {
-  font-style: italic;
-  font-weight: 500;
-}
-
-.nav-links {
-  display: flex;
-  gap: 42px;
-  align-items: center;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--charcoal-soft);
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 0.5px;
-  background: var(--teal);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after { width: 100%; }
-.nav-links a:hover { color: var(--teal); }
-
-.nav-cta {
-  padding: 10px 24px;
-  border: 0.5px solid var(--teal);
-  color: var(--teal) !important;
-  font-size: 12px !important;
-  transition: all 0.3s ease;
-}
-
-.nav-cta:hover {
-  background: var(--teal);
-  color: var(--ivory) !important;
-}
-
-.nav-cta::after { display: none; }
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .nav-logo-text { font-size: 18px; }
-}
-
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 180px 0 120px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-bg-mark {
-  position: absolute;
-  right: -80px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 640px;
-  height: 640px;
-  opacity: 0.06;
-  pointer-events: none;
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 880px;
-}
-
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.2s forwards;
-}
-
-.hero-eyebrow::before {
-  content: '';
-  width: 48px;
-  height: 0.5px;
-  background: var(--teal);
-}
-
-.hero-title {
-  font-size: clamp(52px, 8vw, 108px);
-  font-weight: 300;
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  margin-bottom: 36px;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.4s forwards;
-}
-
-.hero-title em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--teal-soft);
-}
-
-.hero-subtitle {
-  font-size: 19px;
-  line-height: 1.65;
-  color: var(--charcoal-soft);
-  max-width: 620px;
-  margin-bottom: 56px;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.6s forwards;
-}
-
-.hero-ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.8s forwards;
-}
-
-.btn {
-  padding: 16px 32px;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 0.5px solid var(--teal);
-  background: transparent;
-  color: var(--teal);
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.btn-primary {
-  background: var(--teal);
-  color: var(--ivory);
-}
-
-.btn-primary:hover {
-  background: var(--teal-deep);
-  transform: translateY(-1px);
-}
-
-.btn-secondary:hover {
-  background: var(--teal);
-  color: var(--ivory);
-}
-
-.btn .arrow {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.3s ease;
-}
-
-.btn:hover .arrow { transform: translateX(4px); }
-
-/* ===== APPROACH SECTION ===== */
-.approach {
-  padding: 160px 0;
-  border-top: 0.5px solid var(--line);
-  position: relative;
-}
-
-.section-label {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 48px;
-}
-
-.section-label::before {
-  content: '';
-  width: 36px;
-  height: 0.5px;
-  background: var(--teal);
-}
-
-.approach-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 120px;
-  align-items: start;
-}
-
-@media (max-width: 968px) {
-  .approach-grid { grid-template-columns: 1fr; gap: 64px; }
-}
-
-.approach-heading {
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 300;
-  line-height: 1.05;
-  margin-bottom: 32px;
-}
-
-.approach-heading em {
-  font-style: italic;
-  color: var(--teal-soft);
-}
-
-.approach-body p {
-  font-size: 17px;
-  line-height: 1.75;
-  color: var(--charcoal-soft);
-  margin-bottom: 24px;
-}
-
-.approach-body p:last-child { margin-bottom: 0; }
-
-/* ===== PILLARS ===== */
-.pillars {
-  padding: 120px 0;
-  background: var(--ivory-warm);
-  position: relative;
-}
-
-.pillars::before, .pillars::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 0.5px;
-  background: var(--line);
-}
-
-.pillars::before { top: 0; }
-.pillars::after { bottom: 0; }
-
-.pillars-heading {
-  font-size: clamp(36px, 4.5vw, 56px);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 80px;
-  max-width: 720px;
-}
-
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 180px 0 120px; position: relative; overflow: hidden; }
+.hero-bg-mark { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 640px; height: 640px; opacity: 0.06; pointer-events: none; }
+.hero-inner { position: relative; z-index: 2; max-width: 880px; }
+.hero-eyebrow { display: flex; align-items: center; gap: 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--teal); margin-bottom: 40px; }
+.hero-eyebrow::before { content: ''; width: 48px; height: 0.5px; background: var(--teal); }
+.hero-title { font-size: clamp(52px, 8vw, 108px); font-weight: 300; line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 36px; }
+.hero-title em { font-style: italic; font-weight: 400; color: var(--teal-soft); }
+.hero-subtitle { font-size: 19px; line-height: 1.65; color: var(--charcoal-soft); max-width: 620px; margin-bottom: 56px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: start; }
+@media (max-width: 968px) { .approach-grid { grid-template-columns: 1fr; gap: 64px; } }
+.approach-heading { font-size: clamp(40px, 5vw, 64px); font-weight: 300; line-height: 1.05; margin-bottom: 32px; }
+.approach-heading em { font-style: italic; color: var(--teal-soft); }
+.pillars-heading { font-size: clamp(36px, 4.5vw, 56px); font-weight: 300; line-height: 1.1; margin-bottom: 80px; max-width: 720px; }
 .pillars-heading em { font-style: italic; color: var(--teal-soft); }
-
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 0.5px solid var(--line);
-}
-
-@media (max-width: 768px) {
-  .pillars-grid { grid-template-columns: 1fr; }
-}
-
-.pillar {
-  background: var(--ivory-warm);
-  padding: 56px 48px;
-  transition: background 0.4s ease;
-}
-
+.pillars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); }
+@media (max-width: 768px) { .pillars-grid { grid-template-columns: 1fr; } }
+.pillar { background: var(--ivory-warm); padding: 56px 48px; transition: background 0.4s ease; }
 .pillar:hover { background: var(--ivory); }
-
-.pillar-number {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 28px;
-  font-weight: 300;
-  color: var(--teal-soft);
-  margin-bottom: 24px;
-  display: block;
-}
-
-.pillar-title {
-  font-size: 28px;
-  font-weight: 400;
-  margin-bottom: 16px;
-  line-height: 1.2;
-}
-
-.pillar-body {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--charcoal-soft);
-}
-
-/* ===== WAYS OF LIVING ===== */
-.living {
-  padding: 160px 0;
-}
-
-.living-heading {
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 300;
-  line-height: 1.05;
-  margin-bottom: 16px;
-  max-width: 840px;
-}
-
-.living-heading em { font-style: italic; color: var(--teal-soft); }
-
-.living-intro {
-  font-size: 18px;
-  color: var(--charcoal-soft);
-  max-width: 620px;
-  margin-bottom: 80px;
-  line-height: 1.7;
-}
-
-.living-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.living-item {
-  display: grid;
-  grid-template-columns: 180px 1fr auto;
-  gap: 48px;
-  padding: 48px 0;
-  border-top: 0.5px solid var(--line);
-  align-items: start;
-  transition: padding 0.4s ease;
-}
-
-.living-item:last-child { border-bottom: 0.5px solid var(--line); }
-.living-item:hover { padding: 48px 16px; }
-
-@media (max-width: 768px) {
-  .living-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
-}
-
-.living-item-label {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 19px;
-  color: var(--teal-soft);
-}
-
-.living-item-title {
-  font-size: 32px;
-  font-weight: 400;
-  margin-bottom: 12px;
-}
-
-.living-item-body {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--charcoal-soft);
-  max-width: 640px;
-}
-
-.living-item-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--teal);
-  white-space: nowrap;
-  padding-top: 8px;
-}
-
-.living-item-link:hover { color: var(--teal-deep); }
-
-@media (max-width: 768px) {
-  .living-item-link { padding-top: 8px; }
-}
-
-/* ===== EDITORIAL QUOTE ===== */
-.editorial {
-  padding: 160px 0;
-  background: var(--teal);
-  color: var(--ivory);
-  position: relative;
-  overflow: hidden;
-}
-
-.editorial-mark {
-  position: absolute;
-  left: -60px;
-  bottom: -60px;
-  width: 400px;
-  height: 400px;
-  opacity: 0.08;
-  pointer-events: none;
-}
-
-.editorial-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-.editorial-mark-small {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 40px;
-  opacity: 0.7;
-}
-
-.editorial-quote {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(28px, 4vw, 44px);
-  line-height: 1.3;
-  color: var(--ivory);
-  margin-bottom: 40px;
-  letter-spacing: -0.01em;
-}
-
-.editorial-quote::before, .editorial-quote::after {
-  content: '"';
-  font-size: 1.4em;
-  line-height: 0;
-  color: var(--sand);
-  opacity: 0.6;
-  vertical-align: -0.15em;
-}
-
-.editorial-attr {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--sand-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-
-.editorial-attr::before {
-  content: '';
-  width: 36px;
-  height: 0.5px;
-  background: var(--sand);
-  opacity: 0.5;
-}
-
-/* ===== COMMUNITIES ===== */
-.communities {
-  padding: 160px 0;
-}
-
-.communities-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 96px;
-  align-items: start;
-}
-
-@media (max-width: 968px) {
-  .communities-grid { grid-template-columns: 1fr; gap: 48px; }
-}
-
-.communities-heading {
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 300;
-  line-height: 1.05;
-  margin-bottom: 32px;
-}
-
+.pillar-number { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 300; color: var(--teal-soft); margin-bottom: 24px; display: block; }
+.pillar-title { font-size: 28px; font-weight: 400; margin-bottom: 16px; line-height: 1.2; }
+.pillar-body { font-size: 15px; line-height: 1.7; color: var(--charcoal-soft); }
+.editorial-mark { position: absolute; left: -60px; bottom: -60px; width: 400px; height: 400px; opacity: 0.08; pointer-events: none; }
+.communities-heading { font-size: clamp(40px, 5vw, 64px); font-weight: 300; line-height: 1.05; margin-bottom: 32px; }
 .communities-heading em { font-style: italic; color: var(--teal-soft); }
-
-.communities-body {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--charcoal-soft);
-}
-
-.community-list {
-  list-style: none;
-}
-
-.community-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 28px 0;
-  border-top: 0.5px solid var(--line);
-}
-
+.community-item { display: flex; justify-content: space-between; align-items: baseline; padding: 28px 0; border-top: 0.5px solid var(--line); }
 .community-item:last-child { border-bottom: 0.5px solid var(--line); }
-
-.community-name {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 400;
-  color: var(--teal);
-}
-
+.community-name { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--teal); }
 .community-name em { font-style: italic; color: var(--teal-soft); }
-
-.community-status {
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--sand);
-  font-weight: 500;
-}
-
+.community-status { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 500; }
 .community-status.confirmed { color: var(--teal-soft); }
-
-/* ===== EARLY ACCESS ===== */
-.early-access {
-  padding: 140px 0;
-  background: var(--ivory-warm);
-  border-top: 0.5px solid var(--line);
-  border-bottom: 0.5px solid var(--line);
-}
-
-.access-inner {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.access-heading {
-  font-size: clamp(36px, 4.5vw, 52px);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 24px;
-}
-
+.access-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.access-heading { font-size: clamp(36px, 4.5vw, 52px); font-weight: 300; line-height: 1.1; margin-bottom: 24px; }
 .access-heading em { font-style: italic; color: var(--teal-soft); }
-
-.access-body {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--charcoal-soft);
-  margin-bottom: 48px;
-}
-
-.access-form {
-  display: flex;
-  gap: 12px;
-  max-width: 520px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.access-form input[type="email"] {
-  flex: 1;
-  min-width: 260px;
-  padding: 18px 24px;
-  font-family: var(--sans);
-  font-size: 15px;
-  background: var(--ivory);
-  border: 0.5px solid var(--line-strong);
-  color: var(--charcoal);
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.access-form input[type="email"]:focus {
-  border-color: var(--teal);
-}
-
-.access-form input[type="email"]::placeholder {
-  color: var(--charcoal-soft);
-  opacity: 0.6;
-}
-
-.access-note {
-  margin-top: 24px;
-  font-size: 12px;
-  color: var(--charcoal-soft);
-  letter-spacing: 0.04em;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  padding: 80px 0 48px;
-  background: var(--teal-deep);
-  color: var(--sand-light);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr;
-  gap: 64px;
-  margin-bottom: 64px;
-}
-
-@media (max-width: 768px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-}
-
-.footer-brand svg { width: 56px; height: 56px; margin-bottom: 20px; }
-
-.footer-brand-name {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  color: var(--ivory);
-  margin-bottom: 16px;
-}
-
-.footer-brand-name .italic-s { font-style: italic; }
-
-.footer-tagline {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 17px;
-  color: var(--sand-light);
-  opacity: 0.8;
-  max-width: 280px;
-  line-height: 1.5;
-}
-
-.footer-col-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--sand);
-  margin-bottom: 20px;
-}
-
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 12px; }
-.footer-col a { font-size: 14px; color: var(--sand-light); opacity: 0.85; }
-.footer-col a:hover { opacity: 1; color: var(--ivory); }
-
-.footer-bottom {
-  padding-top: 32px;
-  border-top: 0.5px solid rgba(184, 165, 137, 0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 12px;
-  color: var(--sand);
-  letter-spacing: 0.04em;
-}
-
-.footer-legal { display: flex; gap: 32px; flex-wrap: wrap; }
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
-}
-
-.reveal.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  .reveal { opacity: 1; transform: none; }
-}
+.access-body { font-size: 17px; line-height: 1.7; color: var(--charcoal-soft); margin-bottom: 48px; }
+.access-form { display: flex; gap: 12px; max-width: 520px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.access-form input[type="email"] { flex: 1; min-width: 260px; padding: 18px 24px; font-family: var(--sans); font-size: 15px; background: var(--ivory); border: 0.5px solid var(--line-strong); color: var(--charcoal); outline: none; transition: border-color 0.3s ease; }
+.access-form input[type="email"]:focus { border-color: var(--teal); }
+.access-note { margin-top: 24px; font-size: 12px; color: var(--charcoal-soft); letter-spacing: 0.04em; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
+<nav class="site-nav" id="nav">
   <div class="container nav-inner">
-    <a href="#top" class="nav-logo" aria-label="Seawell home">
+    <a href="index.html" class="nav-logo" aria-label="Seawell home">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="50" cy="50" r="47" fill="none" stroke="#1E4D47" stroke-width="1.3"/>
         <text x="50" y="68" text-anchor="middle" font-family="Cormorant Garamond, Didot, Georgia, serif" font-size="62" font-style="italic" font-weight="500" fill="#1E4D47">S</text>
@@ -827,16 +63,18 @@ footer {
       </svg>
       <span class="nav-logo-text"><span class="italic-s">S</span>EAWELL</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#approach">Our approach</a></li>
-      <li><a href="#living">Ways of living</a></li>
-      <li><a href="#communities">Communities</a></li>
-      <li><a href="#access" class="nav-cta">Early access</a></li>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="about.html">Approach</a></li>
+      <li><a href="living.html">Ways of Living</a></li>
+      <li><a href="life.html">Life at Seawell</a></li>
+      <li><a href="communities.html">Communities</a></li>
+      <li><a href="families.html">For Families</a></li>
+      <li><a href="contact.html" class="nav-cta">Schedule a Visit</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="top">
   <svg class="hero-bg-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <circle cx="50" cy="50" r="47" fill="none" stroke="#1E4D47" stroke-width="0.3"/>
@@ -844,39 +82,36 @@ footer {
     <path d="M 24 78 Q 37 74 50 78 T 76 78" fill="none" stroke="#1E4D47" stroke-width="0.4"/>
   </svg>
   <div class="container hero-inner">
-    <div class="hero-eyebrow">A new kind of senior living</div>
-    <h1 class="hero-title">Small enough<br>to <em>know</em> you.</h1>
-    <p class="hero-subtitle">Seawell brings the intimacy of a smaller community together with the clinical confidence and wellness programming of a major provider — because aging well shouldn't mean choosing between feeling cared for and being cared for.</p>
-    <div class="hero-ctas">
-      <a href="#approach" class="btn btn-primary">
-        Our approach
+    <div class="hero-eyebrow hero-anim-1">A new kind of senior living</div>
+    <h1 class="hero-title hero-anim-2">Small enough<br>to <em>know</em> you.</h1>
+    <p class="hero-subtitle hero-anim-3">Seawell brings the intimacy of a smaller community together with the clinical confidence and wellness programming of a major provider — because aging well shouldn't mean choosing between feeling cared for and being cared for.</p>
+    <div class="hero-ctas hero-anim-4">
+      <a href="about.html" class="btn btn-primary">Our approach
         <svg class="arrow" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="square"/></svg>
       </a>
-      <a href="#access" class="btn btn-secondary">
-        Request early access
+      <a href="contact.html" class="btn btn-secondary">Schedule a visit
         <svg class="arrow" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="square"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- APPROACH -->
-<section class="approach" id="approach">
+<section class="standard" id="approach">
   <div class="container">
     <div class="section-label">Our approach</div>
     <div class="approach-grid">
       <h2 class="approach-heading reveal">A home where your parent is <em>known by name</em> before they're known by chart.</h2>
-      <div class="approach-body reveal">
+      <div class="prose reveal">
         <p>Today's senior living forces families into a hard choice. The large national communities offer clinical sophistication, beautiful amenities, and wellness programming — but often feel institutional. The smaller residential homes feel warm and personal — but lack the clinical depth to handle needs as they progress.</p>
         <p>Seawell was built in the space between. Properties deliberately sized to stay human. Care teams who know your mother's story, not just her chart. Licensed nursing, specialized memory care, and wellness programming built into daily life rather than added on.</p>
         <p>Small enough to know you. Serious enough to care for you.</p>
+        <p><a href="about.html">Read more about our approach →</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PILLARS -->
-<section class="pillars">
+<section class="band">
   <div class="container">
     <h2 class="pillars-heading reveal">Four <em>commitments</em> we operate by — every property, every day.</h2>
     <div class="pillars-grid">
@@ -904,69 +139,69 @@ footer {
   </div>
 </section>
 
-<!-- WAYS OF LIVING -->
-<section class="living" id="living">
+<section class="standard" id="living">
   <div class="container">
     <div class="section-label">Ways of living</div>
-    <h2 class="living-heading reveal">Three levels of care. <em>One</em> continuous home.</h2>
-    <p class="living-intro reveal">Seawell communities offer Independent Living, Assisted Living, and Memory Care under one roof — so residents move forward in their lives, not out of their home, as needs evolve.</p>
-    <div class="living-list">
-      <div class="living-item reveal">
-        <span class="living-item-label">i. Independent Living</span>
+    <h2 class="approach-heading reveal" style="margin-bottom:16px;max-width:840px">Three levels of care. <em>One</em> continuous home.</h2>
+    <p class="reveal" style="font-size:18px;color:var(--charcoal-soft);max-width:620px;margin-bottom:64px;line-height:1.7;">Seawell communities offer Independent Living, Assisted Living, and Memory Care under one roof — so residents move forward in their lives, not out of their home, as needs evolve.</p>
+    <div class="row-list">
+      <a href="independent-living.html" class="row-item reveal">
+        <span class="row-label">i. Independent Living</span>
         <div>
-          <h3 class="living-item-title">For active years, thoughtfully kept.</h3>
-          <p class="living-item-body">Private residences, chef-prepared dining, wellness programming, and community — without the burden of home maintenance or the isolation of living alone. For adults who want the freedom of their own life with the benefits of shared community.</p>
+          <h3 class="row-title">For active years, thoughtfully kept.</h3>
+          <p class="row-body">Private residences, chef-prepared dining, wellness programming, and community — without the burden of home maintenance or the isolation of living alone.</p>
         </div>
-        <a href="#access" class="living-item-link">Learn more →</a>
-      </div>
-      <div class="living-item reveal">
-        <span class="living-item-label">ii. Assisted Living</span>
+        <span class="row-arrow">Learn more →</span>
+      </a>
+      <a href="assisted-living.html" class="row-item reveal">
+        <span class="row-label">ii. Assisted Living</span>
         <div>
-          <h3 class="living-item-title">Support that preserves independence.</h3>
-          <p class="living-item-body">Personalized help with the activities of daily life — medication, bathing, dressing, dining — delivered with dignity and discretion. Residents maintain privacy, agency, and their own rhythms while getting exactly the support they need.</p>
+          <h3 class="row-title">Support that preserves independence.</h3>
+          <p class="row-body">Personalized help with the activities of daily life — medication, bathing, dressing, dining — delivered with dignity and discretion.</p>
         </div>
-        <a href="#access" class="living-item-link">Learn more →</a>
-      </div>
-      <div class="living-item reveal">
-        <span class="living-item-label">iii. Memory Care</span>
+        <span class="row-arrow">Learn more →</span>
+      </a>
+      <a href="memory-care.html" class="row-item reveal">
+        <span class="row-label">iii. Memory Care</span>
         <div>
-          <h3 class="living-item-title">Specialized care for cognitive change.</h3>
-          <p class="living-item-body">Secured, purpose-designed environments for residents with Alzheimer's, dementia, and other cognitive conditions. Certified memory care staff, evidence-based programming, and design choices that reduce confusion and support continuity of identity.</p>
+          <h3 class="row-title">Specialized care for cognitive change.</h3>
+          <p class="row-body">Secured, purpose-designed environments for residents with Alzheimer's, dementia, and other cognitive conditions. Certified staff, evidence-based programming.</p>
         </div>
-        <a href="#access" class="living-item-link">Learn more →</a>
-      </div>
+        <span class="row-arrow">Learn more →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- EDITORIAL QUOTE -->
-<section class="editorial">
+<section class="deep" style="position:relative;overflow:hidden;">
   <svg class="editorial-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <circle cx="50" cy="50" r="47" fill="none" stroke="#F4EDE0" stroke-width="0.5"/>
     <text x="50" y="70" text-anchor="middle" font-family="Cormorant Garamond, Didot, Georgia, serif" font-size="70" font-style="italic" fill="#F4EDE0">S</text>
   </svg>
   <div class="container">
-    <div class="editorial-inner">
-      <svg class="editorial-mark-small" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <div class="pull-quote">
+      <svg class="pull-quote-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="50" cy="50" r="47" fill="none" stroke="#F4EDE0" stroke-width="1.5"/>
         <text x="50" y="68" text-anchor="middle" font-family="Cormorant Garamond, Didot, Georgia, serif" font-size="62" font-style="italic" font-weight="500" fill="#F4EDE0">S</text>
       </svg>
-      <p class="editorial-quote">The question I kept asking myself was whether any place could actually know my mother — not just her medications and her fall risk, but her. The answer at Seawell was yes, and it changed everything.</p>
-      <div class="editorial-attr">Anticipated resident family, Southern California</div>
+      <p class="pull-quote-text" style="color:var(--ivory)">The question we kept asking ourselves was whether any place could actually know our mother — not just her medications and her fall risk, but her. Seawell was built around the answer.</p>
+      <div class="pull-quote-attr">From our founding philosophy</div>
     </div>
   </div>
 </section>
 
-<!-- COMMUNITIES -->
-<section class="communities" id="communities">
+<section class="standard" id="communities">
   <div class="container">
     <div class="section-label">Communities</div>
-    <div class="communities-grid">
+    <div class="two-col-wide">
       <div class="reveal">
         <h2 class="communities-heading">Opening across California — and <em>beyond</em>.</h2>
-        <p class="communities-body">Seawell is building a thoughtful portfolio of senior living communities, beginning in California and expanding to select Western states. Each location is chosen for its climate, community, and access to quality healthcare — and each is purpose-built around our four commitments.</p>
+        <p class="prose">Seawell is building a thoughtful portfolio of senior living communities, beginning in California and expanding to select Western states. Each location is chosen for its climate, community, and access to quality healthcare — and each is purpose-built around our four commitments.</p>
+        <p style="margin-top:32px"><a href="communities.html" class="btn btn-secondary" style="font-size:12px">Explore communities
+          <svg class="arrow" viewBox="0 0 14 14"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="square"/></svg>
+        </a></p>
       </div>
-      <ul class="community-list reveal">
+      <ul style="list-style:none" class="reveal">
         <li class="community-item">
           <span class="community-name"><span style="font-style:italic">S</span>eawell at La Jolla</span>
           <span class="community-status">Anticipated 2026</span>
@@ -988,15 +223,14 @@ footer {
   </div>
 </section>
 
-<!-- EARLY ACCESS -->
-<section class="early-access" id="access">
+<section class="band" id="access">
   <div class="container">
     <div class="access-inner">
-      <div class="section-label" style="justify-content:center">Early access</div>
+      <div class="section-label centered">Early access</div>
       <h2 class="access-heading reveal">Be among the <em>first</em> to know.</h2>
       <p class="access-body reveal">Join our early access list to receive community opening announcements, tour invitations, and family-planning resources as each Seawell community prepares to welcome residents.</p>
-      <form class="access-form reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank you'; this.querySelector('input').value='';">
-        <input type="email" placeholder="Your email address" required aria-label="Email address">
+      <form class="access-form reveal" name="early-access" netlify onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank you'; this.querySelector('input').value='';">
+        <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
         <button type="submit" class="btn btn-primary">Request access</button>
       </form>
       <p class="access-note">We'll never share your information. Unsubscribe anytime.</p>
@@ -1004,8 +238,7 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
+<footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1020,10 +253,25 @@ footer {
       <div class="footer-col">
         <div class="footer-col-label">Seawell</div>
         <ul>
-          <li><a href="#approach">Our approach</a></li>
-          <li><a href="#living">Ways of living</a></li>
-          <li><a href="#communities">Communities</a></li>
-          <li><a href="#access">Early access</a></li>
+          <li><a href="about.html">Our approach</a></li>
+          <li><a href="life.html">Life at Seawell</a></li>
+          <li><a href="communities.html">Communities</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Ways of Living</div>
+        <ul>
+          <li><a href="independent-living.html">Independent Living</a></li>
+          <li><a href="assisted-living.html">Assisted Living</a></li>
+          <li><a href="memory-care.html">Memory Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Resources</div>
+        <ul>
+          <li><a href="families.html">For Families</a></li>
+          <li><a href="families.html#faq">FAQ</a></li>
+          <li><a href="contact.html">Schedule a Visit</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1032,14 +280,6 @@ footer {
           <li><a href="mailto:hello@seawellcare.com">hello@seawellcare.com</a></li>
           <li><a href="tel:+10000000000">(000) 000-0000</a></li>
           <li>California, USA</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Connect</div>
-        <ul>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Careers</a></li>
         </ul>
       </div>
     </div>
@@ -1054,25 +294,6 @@ footer {
   </div>
 </footer>
 
-<script>
-// Nav scroll state
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 24) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
-
-// Reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+<script src="main.js"></script>
 </body>
 </html>
