@@ -169,7 +169,7 @@ nav.site-nav.scrolled {
 .nav-links a:hover, .nav-links a.active { color: var(--teal); }
 
 .nav-cta {
-  padding: 10px 20px;
+  padding: 10px 28px;
   border: 0.5px solid var(--teal);
   color: var(--teal) !important;
   transition: all 0.3s ease;
