@@ -22,14 +22,14 @@
       </svg>
       <span class="nav-logo-text"><span class="italic-s">S</span>EAWELL</span>
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="about.html">Approach</a></li>
       <li><a href="living.html">Ways of Living</a></li>
       <li><a href="life.html">Life at Seawell</a></li>
       <li><a href="communities.html">Communities</a></li>
       <li><a href="families.html">For Families</a></li>
-      <li><a href="contact.html" class="nav-cta active">Schedule a Visit</a></li>
+      <li><a href="contact.html" class="nav-cta active" aria-current="page">Schedule a Visit</a></li>
     </ul>
   </div>
 </nav>
@@ -106,7 +106,7 @@
             <textarea id="message" name="message" placeholder="Tell us a bit about what you're looking for, or questions you'd like us to answer..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary form-submit">Send message
-            <svg class="arrow" viewBox="0 0 14 14"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="square"/></svg>
+            <svg class="arrow" aria-hidden="true" viewBox="0 0 14 14"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="square"/></svg>
           </button>
           <p style="font-size:12px;color:var(--charcoal-soft);margin-top:8px;opacity:0.8">We typically respond within one business day. Your information will not be shared.</p>
         </form>
